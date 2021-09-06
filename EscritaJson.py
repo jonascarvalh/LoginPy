@@ -1,6 +1,6 @@
 import json
-import os
 from LeituraJson import LerJson
+from Diretorio import ArquivoExiste
 
 # Define o nome do arquivo Json
 def NomeArquivo():
@@ -27,39 +27,46 @@ def ModeloVazio(login,senha):
 def Escrita(arquivo, dado):
     # Escrever arquivo formatado
     with open(arquivo, 'w') as file:
-        json.dump(dado,file,indent=4) # Escreve e formata o json
+        json.dump(dado,file,sort_keys=True,indent=4) # Escreve e formata o json
     # with
 # Escrita
 
-def ModeloNaoVazio(dado,login,senha):
+def ModeloNaoVazio(dados,login,senha):
     # Adicionando outro dado
-    dado.append({
+    dados.append({
         "e-mail": login,
         "senha" : senha
     })
-    return dado
+    return dados
 # ModeloNaoVazio
 
+def ObterChaveEmail(dados):
+    return dados['e-mail']
+# ObterChaveEmail
+
 def EscritaJson (login,senha):
-    # Gera arquivo json
+    # Recebe o nome do arquivo
     arquivo = NomeArquivo()
 
-    if not os.path.isfile(arquivo):
+    # Verifica se o arquivo existe
+    # Caso não exista, cria um novo
+    if ArquivoExiste(arquivo):
         GerarJson(arquivo)
-    # if
-
+    # Arquivo Existe
+    
     # Faz a leitura do arquivo em questão e 
-    # retorna os elementos caso exista
-    dado = LerJson(arquivo)
+    # retorna os elementos
+    dados = LerJson(arquivo)
 
     # Monta o dado de acordo com o tipo Json
-    # Quando estiver vazio
-    # Escreve o dado quando o Json está vazio
-    if not dado:
-        dado = ModeloVazio(login,senha)
-        Escrita(arquivo,dado)
+    # e insere esse dado
+    # se estiver vazio, ou não
+    if not dados:
+        dados = ModeloVazio(login,senha)
+        Escrita(arquivo,dados)
     else:
-        dado = ModeloNaoVazio(dado,login,senha)
-        Escrita(arquivo,dado)
+        dados = ModeloNaoVazio(dados,login,senha)
+        dados.sort(key=ObterChaveEmail)
+        Escrita(arquivo,dados)
     # if not
 # WriteJson
