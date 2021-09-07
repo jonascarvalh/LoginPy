@@ -1,6 +1,8 @@
 import json
+import os
 from LeituraJson import LerJson
 from Diretorio import ArquivoExiste
+from Verificacao import ChaveProcurada
 
 # Define o nome do arquivo Json
 def NomeArquivo():
@@ -58,6 +60,14 @@ def EscritaJson (login,senha):
     # retorna os elementos
     dados = LerJson(arquivo)
 
+    # Verifica se o login já existe, caso exista
+    # não faz o cadastro
+    if ChaveProcurada(login,dados) != 0:
+        print('Este e-mail já está cadastrado')
+        os.system('pause')
+        return 0
+    # Chave Procurada
+
     # Monta o dado de acordo com o tipo Json
     # e insere esse dado
     # se estiver vazio, ou não
@@ -68,5 +78,6 @@ def EscritaJson (login,senha):
         dados = ModeloNaoVazio(dados,login,senha)
         dados.sort(key=ObterChaveEmail)
         Escrita(arquivo,dados)
+        
     # if not
 # WriteJson

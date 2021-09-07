@@ -6,3 +6,10 @@ def ArquivoExiste(arquivo):
     else:
         return False
 # ArquivoExiste
+
+def LimparTerminal():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        os.system('cls')
+# LimparTerminal

@@ -1,5 +1,6 @@
 import sys
 from EscritaJson import EscritaJson
+from Diretorio import LimparTerminal
 
 def Cadastro():
     email = input('Indique seu e-mail: ')
@@ -13,6 +14,7 @@ def Login():
 # Login
 
 while(1):
+    LimparTerminal()
     print('[1] Cadastro')
     print('[2] Login')
     print('[0] Sair')
