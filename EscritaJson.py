@@ -1,14 +1,6 @@
 import json
-import os
-from LeituraJson import LerJson
-from Diretorio import ArquivoExiste
-from Verificacao import ChaveProcurada
-
-# Define o nome do arquivo Json
-def NomeArquivo():
-    arquivo = 'dados.json'
-    return arquivo
-# NomeArquivo
+import Diretorio   as Dir
+from   LeituraJson import LerJson
 
 def GerarJson(arquivo):
     dado = []
@@ -48,23 +40,23 @@ def ObterChaveEmail(dados):
 
 def EscritaJson (login,senha):
     # Recebe o nome do arquivo
-    arquivo = NomeArquivo()
+    arquivo = Dir.NomeArquivo()
 
     # Verifica se o arquivo existe
     # Caso não exista, cria um novo
-    if ArquivoExiste(arquivo):
+    if Dir.ArquivoExiste(arquivo):
         GerarJson(arquivo)
     # Arquivo Existe
     
     # Faz a leitura do arquivo em questão e 
     # retorna os elementos
-    dados = LerJson(arquivo)
+    dados = LerJson()
 
     # Verifica se o login já existe, caso exista
     # não faz o cadastro
-    if ChaveProcurada(login,dados) != 0:
-        print('Este e-mail já está cadastrado')
-        os.system('pause')
+    if Dir.ChaveProcurada(login,dados) != 0:
+        Dir.LimparTerminal()
+        print('Este e-mail já está cadastrado\n')
         return 0
     # Chave Procurada
 
@@ -74,10 +66,13 @@ def EscritaJson (login,senha):
     if not dados:
         dados = ModeloVazio(login,senha)
         Escrita(arquivo,dados)
+        Dir.LimparTerminal()
+        print('Sua conta foi registrada com sucesso!\n')
     else:
         dados = ModeloNaoVazio(dados,login,senha)
         dados.sort(key=ObterChaveEmail)
         Escrita(arquivo,dados)
-        
+        Dir.LimparTerminal()
+        print('Sua conta foi registrada com sucesso!\n')
     # if not
 # WriteJson

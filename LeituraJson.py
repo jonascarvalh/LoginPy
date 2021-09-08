@@ -1,7 +1,9 @@
 import json
+from   Diretorio import NomeArquivo
 
-def LerJson(arquivo):
-    
+def LerJson():
+    arquivo = NomeArquivo()
+
     # load: Carregar arquivo
     # loads: Carregar arquivo em uma lista de objetos
     with open(arquivo, 'r') as file:

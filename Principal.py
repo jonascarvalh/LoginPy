@@ -1,20 +1,26 @@
 import sys
-from EscritaJson import EscritaJson
-from Diretorio import LimparTerminal
+from   EscritaJson import EscritaJson
+from   Diretorio   import LimparTerminal
+from   Login       import EfetuarLogin
 
 def Cadastro():
-    email = input('Indique seu e-mail: ')
-    senha = input('Indique sua senha:  ')
+    LimparTerminal()
+    print(' ==「 Cadastro 」== ')
+    email = input('E-mail: ')
+    senha = input('Senha:  ')
     EscritaJson(email,senha)
 # Cadastro
 
 def Login():
-    email = input('Indique seu e-mail: ')
-    senha = input('Indique sua senha:  ')
+    LimparTerminal()
+    print(' ==「 Login 」== ')
+    email = input('E-mail: ')
+    senha = input('Senha:  ')
+    EfetuarLogin(email,senha)
 # Login
 
+LimparTerminal()
 while(1):
-    LimparTerminal()
     print('[1] Cadastro')
     print('[2] Login')
     print('[0] Sair')
