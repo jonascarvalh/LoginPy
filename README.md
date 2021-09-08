@@ -25,6 +25,6 @@ O arquivo _dados.json_ será criado dentro da pasta do programa.
 
 06/09/2021 - Agora os dados estão sendo ordenados por e-mail assim que são inseridos.
 
-07/09/2021 - Os e-mails cadastrados não poderam ser repetidos.
+07/09/2021 - Agora o programa não permite que os e-mails cadastrados sejam repetidos.
 
 08/09/2021 - Implementação da Função Login, Mensagens de êxito/falha ao cadastrar ou logar.
