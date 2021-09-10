@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 def ArquivoExiste(arquivo):
     if not os.path.isfile(arquivo):
@@ -15,9 +16,11 @@ def LimparTerminal():
 # LimparTerminal
 
 # Define o nome do arquivo Json
-def NomeArquivo():
-    arquivo = 'dados.json'
-    return arquivo
+def CaminhoArquivo():
+    nome = 'dados.json'
+    Path('data').mkdir(exist_ok=True)
+    caminho = os.path.join('data', nome)
+    return caminho
 # NomeArquivo
 
 # Verifica se a chave procurada existe

@@ -1,8 +1,8 @@
 import json
-from   Diretorio import NomeArquivo
+from   src.Diretorio import CaminhoArquivo
 
 def LerJson():
-    arquivo = NomeArquivo()
+    arquivo = CaminhoArquivo()
 
     # load: Carregar arquivo
     # loads: Carregar arquivo em uma lista de objetos

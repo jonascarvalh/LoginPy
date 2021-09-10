@@ -1,6 +1,6 @@
-from Diretorio   import LimparTerminal
-from Diretorio import ChaveProcurada
-from LeituraJson import LerJson
+from src.Diretorio   import LimparTerminal
+from src.Diretorio   import ChaveProcurada
+from src.LeituraJson import LerJson
 
 def EfetuarLogin(login,senha):
     dados = LerJson()

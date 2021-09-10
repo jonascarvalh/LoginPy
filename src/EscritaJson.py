@@ -1,6 +1,6 @@
 import json
-import Diretorio   as Dir
-from   LeituraJson import LerJson
+import src.Diretorio   as Dir
+from   src.LeituraJson import LerJson
 
 def GerarJson(arquivo):
     dado = []
@@ -40,7 +40,7 @@ def ObterChaveEmail(dados):
 
 def EscritaJson (login,senha):
     # Recebe o nome do arquivo
-    arquivo = Dir.NomeArquivo()
+    arquivo = Dir.CaminhoArquivo()
 
     # Verifica se o arquivo existe
     # Caso não exista, cria um novo

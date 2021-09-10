@@ -1,7 +1,7 @@
 import sys
-from   EscritaJson import EscritaJson
-from   Diretorio   import LimparTerminal
-from   Login       import EfetuarLogin
+from   src.EscritaJson import EscritaJson
+from   src.Diretorio   import LimparTerminal
+from   src.Login       import EfetuarLogin
 
 def Cadastro():
     LimparTerminal()
